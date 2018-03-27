@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <son @send='getMsg'></son>
+    </div>
+</body>
+<script src="../node_modules/vue/dist/vue.js"></script>
+<script>
+    Vue.component("son", {
+        template: "<div><button @click='reslove'>发信息</button></div>",
+        data() {
+            return {
+                name: '',
+                msg: '游荡de蝌蚪'
+            }
+        },
+        methods: {
+            reslove() {
+                this.$emit('send', this.msg);
+            }
+        }
+    })
+    const vm = new Vue({
+        el: "#app",
+        data: {
+            name: "tese"
+        },
+        methods: {
+            getMsg(msg) {
+                console.log('儿子来信了！' + msg)
+            }
+        }
+    })
+
+    
+</script>
+
+</html>
